@@ -13,7 +13,6 @@ object element{  //companion object
     def set(name: String, atomicNumber: Int,symbol: String): element = {
         new element(name,atomicNumber,symbol)
     }
-
     def output(elements: element):String = s"Name: ${elements.name}, AtomicNumber: ${elements.atomicNumber}"
 }
 
