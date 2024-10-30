@@ -1,10 +1,24 @@
 1) Encapsulation : Class, Object, Instance Variables, Constructors
-2) Abstraction : Access specifiers
-3) Polymorphism : Method overloading, method overrirding
-4) Inheritane: super class, sub class,
+2) Inheritane: super class, sub class,
+3) Abstraction : Access specifiers
+4) Polymorphism : Method overloading, method overrirding
 5) Companion Object
 
+Including all these concepts in those 5 files: 
 method overloading with methods of default parameters, 
-varibale number of parameters, one method with different parameters
+varibale number of parameters(done in Polymorphism), one method with different parameters(done in Polymorphism)
 
 create a normal class print the obj, then create a case class and the print the obj.
+
+super class, sub class- accessing te methods of eacsh and pasing one refernce into the other
+object for a abstract class
+
+anonomous classes
+
+Traits in scala - lamda suport in trait, abstract, sub classes 
+
+implement one abstract and one trait class.
+
+implement a class which inherits multiple abstrct classes
+
+implicit conversion, implicit classes.

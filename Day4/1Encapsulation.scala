@@ -43,8 +43,6 @@ class Encapsulation(var number: Double){  //Class creation in Scala with propert
     obj.add(3)
     println(s"Getting the current value of the number: ${obj.Getnumber}")
     println(s"Again Checking the divisibily with 7: ${obj.divisibility(7)}")
-
-
 }
 
 
