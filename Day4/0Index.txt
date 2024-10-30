@@ -1,0 +1,10 @@
+1) Encapsulation : Class, Object, Instance Variables, Constructors
+2) Abstraction : Access specifiers
+3) Polymorphism : Method overloading, method overrirding
+4) Inheritane: super class, sub class,
+5) Companion Object
+
+method overloading with methods of default parameters, 
+varibale number of parameters, one method with different parameters
+
+create a normal class print the obj, then create a case class and the print the obj.
