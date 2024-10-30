@@ -1,5 +1,11 @@
 class Encapsulation(var number: Double){  //Class creation in Scala with properties and methods
     //primary constructor in the header of the class creation 
+
+    def this(number: Double, xtype: Int) = {  // Defining the variables by constructor
+        this(number)
+        this.xtype = xtype
+    }
+
     def add(x: Double): Unit  = number += x
 
     def subtract(x: Double): Unit = number -= x
@@ -19,12 +25,6 @@ class Encapsulation(var number: Double){  //Class creation in Scala with propert
     def getnum: Int = num // Accesing the instance variables by a method.
 
     var xtype: Int = 0 //Instance variable
-
-    def this(number: Double, xtype: Int) = {  // Defining the variables by constructor
-        this(number)
-        this.xtype = xtype
-    }
-
 
 }
 
