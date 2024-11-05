@@ -1,0 +1,2 @@
+1) job runner - string, time_in seconds, block
+   the logic in the block should be executed right after object creation after time_in_seconds number of seconds.
