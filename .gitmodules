@@ -1,3 +1,6 @@
 [submodule "Project/Equipment_Allocation"]
 	path = Project/Equipment_Allocation
 	url = https://github.com/srinija-kambhampaty/Equipment_Allocation.git
+[submodule "Project/EventManagement"]
+	path = Project/EventManagement
+	url = https://github.com/srinija-kambhampaty/EventManagement.git
