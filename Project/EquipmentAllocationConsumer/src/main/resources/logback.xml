@@ -1,0 +1,53 @@
+<configuration>
+    <!-- Maintenance Alert Logger -->
+    <appender name="MaintenanceAlertFile" class="ch.qos.logback.core.FileAppender">
+        <file>logs/maintenance_alerts.log</file>
+        <append>true</append>
+        <immediateFlush>true</immediateFlush>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Inventory Alert Logger -->
+    <appender name="InventoryAlertFile" class="ch.qos.logback.core.FileAppender">
+        <file>logs/inventory_alerts.log</file>
+        <append>true</append>
+        <immediateFlush>true</immediateFlush>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Overdue Reminder Logger -->
+    <appender name="OverdueReminderFile" class="ch.qos.logback.core.FileAppender">
+        <file>logs/overdue_reminders.log</file>
+        <append>true</append>
+        <immediateFlush>true</immediateFlush>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Logger for Maintenance Alerts -->
+    <logger name="MaintenanceAlertLogger" level="info" additivity="false">
+        <appender-ref ref="MaintenanceAlertFile" />
+    </logger>
+
+    <!-- Logger for Inventory Alerts -->
+    <logger name="InventoryAlertLogger" level="info" additivity="false">
+        <appender-ref ref="InventoryAlertFile" />
+    </logger>
+
+    <!-- Logger for Overdue Reminders -->
+    <logger name="OverdueReminderLogger" level="info" additivity="false">
+        <appender-ref ref="OverdueReminderFile" />
+    </logger>
+
+    <!-- Root Logger -->
+    <root level="error">
+        <appender-ref ref="MaintenanceAlertFile" />
+        <appender-ref ref="InventoryAlertFile" />
+        <appender-ref ref="OverdueReminderFile" />
+    </root>
+</configuration>
