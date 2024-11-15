@@ -4,3 +4,6 @@
 [submodule "Project/EventManagement"]
 	path = Project/EventManagement
 	url = https://github.com/srinija-kambhampaty/EventManagement.git
+[submodule "Project/EventManagementConsumer"]
+	path = Project/EventManagementConsumer
+	url = https://github.com/srinija-kambhampaty/EventManagementAlerts_Consumer.git
