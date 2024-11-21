@@ -7,3 +7,6 @@
 [submodule "Project/EventManagementConsumer"]
 	path = Project/EventManagementConsumer
 	url = https://github.com/srinija-kambhampaty/EventManagementAlerts_Consumer.git
+[submodule "Project/EquipmentManagement_frontend"]
+	path = Project/EquipmentManagement_frontend
+	url = https://github.com/srinija-kambhampaty/EquipmentManagement_frontend.git
