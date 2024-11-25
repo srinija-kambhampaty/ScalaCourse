@@ -1,0 +1,3 @@
+class Exercise_4 {
+
+}
