@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="131c18e9-f4ec-440d-be24-cffcf6453691" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day15/Exercises/src/main/scala/Exercise_2.scala" beforeDir="false" afterPath="$PROJECT_DIR$/Day15/Exercises/src/main/scala/Exercise_2.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day15/Exercises/target/scala-2.12/classes/Exercise_2$.class" beforeDir="false" afterPath="$PROJECT_DIR$/Day15/Exercises/target/scala-2.12/classes/Exercise_2$.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +60,7 @@
       <updated>1732183763271</updated>
       <workItem from="1732183764526" duration="898000" />
       <workItem from="1732267075020" duration="8050000" />
-      <workItem from="1732511502793" duration="2635000" />
+      <workItem from="1732511502793" duration="2982000" />
     </task>
     <servers />
   </component>

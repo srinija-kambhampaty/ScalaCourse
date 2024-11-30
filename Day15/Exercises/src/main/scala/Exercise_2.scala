@@ -20,8 +20,8 @@ object Exercise_2 {
     groupedRDD.saveAsTextFile("output/narrow_vs_wide_results")
 
     println("Application completed. Visit the Spark UI to observe the DAG.")
+    readLine()
     Thread.sleep(30000)
-
     spark.stop()
   }
 }
