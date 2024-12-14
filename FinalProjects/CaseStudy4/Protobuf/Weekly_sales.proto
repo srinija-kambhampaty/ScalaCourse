@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package data;
+// Represents weekly sales record
+message WeeklySales {
+  string store = 1;
+  string dept = 2;
+  string date = 3;
+  float weekly_sales = 4;
+  bool is_holiday = 5;
+}
