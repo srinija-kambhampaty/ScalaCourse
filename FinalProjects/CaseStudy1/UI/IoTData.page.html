@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title class="toolbar-title">Sensor Dashboard</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <div class="card-header-container">
+        <ion-searchbar
+          [(ngModel)]="searchTerm"
+          placeholder="Search by Sensor ID"
+          animated
+          (ionInput)="filterSensors()"
+        ></ion-searchbar>
+
+        <ion-button
+          fill="block"
+          size="default"
+          color="primary"
+        >Refresh
+        </ion-button>
+      </div>
+    </ion-card-header>
+
+    <ion-card-content>
+      <div class="table-wrapper">
+        <ion-grid>
+          <ion-row class="table-header">
+            <ion-col>Sensor ID</ion-col>
+            <ion-col>Max Temp (°C)</ion-col>
+            <ion-col>Min Temp (°C)</ion-col>
+            <ion-col>Avg Temp (°C)</ion-col>
+            <ion-col>Max Hum (%)</ion-col>
+            <ion-col>Min Hum (%)</ion-col>
+            <ion-col>Avg Hum (%)</ion-col>
+          </ion-row>
+
+          <ion-row
+            class="table-row"
+            *ngFor="let sensor of filteredSensors"
+          >
+            <ion-col >{{ sensor.sensorId }}</ion-col>
+            <ion-col >{{ sensor.max_temperature }}</ion-col>
+            <ion-col >{{ sensor.min_temperature }}</ion-col>
+            <ion-col>{{ sensor.avg_temperature }}</ion-col>
+            <ion-col>{{ sensor.max_humidity }}</ion-col>
+            <ion-col>{{ sensor.min_humidity }}</ion-col>
+            <ion-col>{{ sensor.avg_humidity }}</ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

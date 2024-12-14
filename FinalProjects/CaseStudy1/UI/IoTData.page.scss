@@ -1,0 +1,67 @@
+ion-toolbar {
+    --background: linear-gradient(90deg, #3f51b5, #2196f3);
+    --color: white;
+  }
+  
+  .toolbar-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+  }
+  
+  ion-searchbar {
+    flex: 1;
+    --background: #f1f1f1;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-right: 10px;
+  }
+  
+  ion-button {
+    width: 50%;
+    background-color: #0288d1;
+    color: white;
+    margin: 10px auto;
+  }
+    
+  .table-wrapper {
+    overflow-y: auto;
+    padding-top: 10px;
+  }
+  
+  .table-header {
+    background-color: #e3f2fd;
+    font-weight: bold;
+    color: #0288d1;
+    text-align: center;
+    border-bottom: 2px solid #0288d1;
+  }
+  
+  .table-row {
+    text-align: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.3s;
+  }
+  
+  .table-row:hover {
+    background-color: #f1f8e9;
+    cursor: pointer;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .card-header-container {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  
+    ion-searchbar {
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+  
+    ion-button {
+      align-self: center;
+    }
+  }
+  
