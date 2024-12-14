@@ -41,17 +41,46 @@ object GCSApiApp extends App {
     new String(blob.getContent(), "UTF-8")
   }
 
-  // Define the Akka HTTP route
+  // Function to fetch sensor-specific data from GCS
+  def fetchSensorDataFromGCS(sensorId: String): Future[String] = Future {
+    val sensorFilePath = s"$basePath$sensorId.json" // Assuming sensor-specific JSON file naming convention
+    val blobId = BlobId.of(bucketName, sensorFilePath)
+    val blob: Blob = storage.get(blobId)
+
+    if (blob == null) {
+      throw new Exception(s"File not found: gs://$bucketName/$sensorFilePath")
+    }
+
+    new String(blob.getContent(), "UTF-8")
+  }
+
+  // Define the Akka HTTP routes
   val route =
-    path("api" / "aggregated-data") {
-      get {
-        onComplete(fetchFileFromGCS) {
-          case Success(jsonContent) =>
-            complete(HttpEntity(ContentTypes.`application/json`, jsonContent))
-          case Failure(exception) =>
-            complete(HttpResponse(StatusCodes.InternalServerError, entity = s"Error: ${exception.getMessage}"))
+    pathPrefix("api" / "aggregated-data") {
+      concat(
+        // Route for /api/aggregated-data
+        pathEndOrSingleSlash {
+          get {
+            onComplete(fetchFileFromGCS) {
+              case Success(jsonContent) =>
+                complete(HttpEntity(ContentTypes.`application/json`, jsonContent))
+              case Failure(exception) =>
+                complete(HttpResponse(StatusCodes.InternalServerError, entity = s"Error: ${exception.getMessage}"))
+            }
+          }
+        },
+        // Route for /api/aggregated-data/:sensorId
+        path(Segment) { sensorId =>
+          get {
+            onComplete(fetchSensorDataFromGCS(sensorId)) {
+              case Success(jsonContent) =>
+                complete(HttpEntity(ContentTypes.`application/json`, jsonContent))
+              case Failure(exception) =>
+                complete(HttpResponse(StatusCodes.InternalServerError, entity = s"Error: ${exception.getMessage}"))
+            }
+          }
         }
-      }
+      )
     }
 
   // Start the Akka HTTP server
@@ -66,8 +95,3 @@ object GCSApiApp extends App {
       system.terminate()
   }
 }
-
-
-
-
-
