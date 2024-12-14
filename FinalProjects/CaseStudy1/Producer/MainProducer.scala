@@ -55,6 +55,7 @@ object MainProducer extends App {
   // Create a source that emits a reading every 100 milliseconds
   val sensorSource = Source.tick(0.millis, 100.millis, ())
     .map { _ =>
+      val sensorId = s"sensor-${Random.nextInt(5) + 1}"
       val reading = generateRandomReading(sensorId)
       val messageBytes = serializeProtobuf(reading)
       val checksumBytes = computeChecksum(messageBytes)
