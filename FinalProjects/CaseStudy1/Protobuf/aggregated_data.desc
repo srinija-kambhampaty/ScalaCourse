@@ -1,0 +1,11 @@
+
+∫
+aggregated_data.protosensor"ê
+AggregatedData
+sensorId (	RsensorId'
+min_temperature (RminTemperature'
+max_temperature (RmaxTemperature'
+avg_temperature (RavgTemperature!
+min_humidity (RminHumidity!
+max_humidity (RmaxHumidity!
+avg_humidity (RavgHumiditybproto3

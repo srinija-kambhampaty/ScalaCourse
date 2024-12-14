@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package sensor;
+
+message AggregatedData {
+  string sensorId = 1;
+  float min_temperature = 2;
+  float max_temperature = 3;
+  double avg_temperature = 4;
+  float min_humidity = 5;
+  float max_humidity = 6;
+  double avg_humidity = 7;
+}
