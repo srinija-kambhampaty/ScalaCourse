@@ -6,10 +6,11 @@ import akka.http.scaladsl.model._
 import akka.http.scaladsl.server.Directives._
 import akka.stream.ActorMaterializer
 import com.google.auth.oauth2.ServiceAccountCredentials
-import com.google.cloud.storage.{Blob, BlobId, Storage, StorageOptions}
+import com.google.cloud.storage.{Blob, BlobId, BlobInfo, Storage, StorageOptions}
 
 import java.io.FileInputStream
 import scala.concurrent.Future
+import scala.jdk.CollectionConverters._
 import scala.util.{Failure, Success}
 
 object GCSApiApp extends App {
@@ -21,7 +22,6 @@ object GCSApiApp extends App {
   val keyFilePath = "/Users/srinija/gcp_key.json" // Replace with the actual path to your JSON key file
   val bucketName = "srinijakambhampaty" // Replace with your bucket name
   val basePath = "aggregated/json/year=2024/month=12/day=12/hour=17/"
-  val fileName = "part-00000-ebe65154-17fb-4060-9583-b03c3fffbdb9.c000.json" // Assuming a fixed file name.
 
   // Load GCP credentials and initialize the Storage client
   val storage: Storage = StorageOptions.newBuilder()
@@ -29,16 +29,19 @@ object GCSApiApp extends App {
     .build()
     .getService
 
-  // Function to fetch the file from GCS
-  def fetchFileFromGCS: Future[String] = Future {
-    val blobId = BlobId.of(bucketName, s"$basePath$fileName")
-    val blob: Blob = storage.get(blobId)
+  // Function to fetch the latest file from GCS
+  def fetchLatestFileFromGCS: Future[String] = Future {
+    val blobs = storage.list(bucketName, Storage.BlobListOption.prefix(basePath)).iterateAll().asScala
 
-    if (blob == null) {
-      throw new Exception(s"File not found: gs://$bucketName/$basePath$fileName")
+    if (blobs.isEmpty) {
+      throw new Exception(s"No files found in directory: gs://$bucketName/$basePath")
     }
 
-    new String(blob.getContent(), "UTF-8")
+    val latestBlob = blobs
+      .filter(_.getName.startsWith(basePath))
+      .maxBy(_.getUpdateTime)
+
+    new String(latestBlob.getContent(), "UTF-8")
   }
 
   // Function to fetch sensor-specific data from GCS
@@ -61,7 +64,7 @@ object GCSApiApp extends App {
         // Route for /api/aggregated-data
         pathEndOrSingleSlash {
           get {
-            onComplete(fetchFileFromGCS) {
+            onComplete(fetchLatestFileFromGCS) {
               case Success(jsonContent) =>
                 complete(HttpEntity(ContentTypes.`application/json`, jsonContent))
               case Failure(exception) =>
